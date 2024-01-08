@@ -44,8 +44,9 @@ function App(){
           <TaskForm 
           btnTitle='Criar task'
           setTaskList={setTaskList}
-          taskList={taskList}/>
-          task = {taskToUpdate}
+          taskList={taskList}
+          task = {taskToUpdate}/>
+          
           <TaskList 
           handleDeleteTask = {handleDeleteTask}
           taskList={taskList}

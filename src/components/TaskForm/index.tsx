@@ -10,7 +10,7 @@ interface Props {
     //to perplexo que precisa diss tudo pra tipar
 }
  //vai receber o id do clickado
-export const TaskForm = ({btnTitle, taskList, setTaskList}: Props) => {
+export const TaskForm = ({task ,btnTitle, taskList, setTaskList}: Props) => {
     const [id, setId] = useState(0)
     const [taskTitle, setTaskTitle] = useState<string | undefined>('')
     const [difficultLevel, setDifficultLevel] = useState<null | number>(0)
