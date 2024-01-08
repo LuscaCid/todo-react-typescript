@@ -1,4 +1,5 @@
-import { ReactElement, useEffect, useState } from 'react'
+import { ReactElement } from 'react'
+import React, {useState} from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import { Container }  from './style/'
@@ -10,12 +11,12 @@ import Task from './interfaces/TaskInterface'
 import { TaskList } from './components/TaskList'
 import Modal from './components/Modal'
 
-function App() : ReactElement {
+function App(){
   //vou ter um objeto que contem o tiyulo e a dificuldade da task
   const [taskList, setTaskList] = useState<Task[]>([])  
-  
+  const [taskToUpdate, setTaskToUpdate] = useState<Task | null>(null)
   const handleDeleteTask = (id : number) => {
-    setTaskList(taskList.filter(task => task.id !== id))//retorna todos os valores que forem diferentes
+    setTaskList(taskList.filter((task : Task) => task.id !== id))//retorna todos os valores que forem diferentes
   }
 
   const showOrHideModal = (display : boolean) : void => {
@@ -27,9 +28,9 @@ function App() : ReactElement {
       modal?.classList.add('hide')
     }
   }
-  const handleEdit = () : void => {
+  const handleEdit = (task :Task) : void => {
     showOrHideModal(true)
-
+    setTaskToUpdate(task)
   }
 
   return (
@@ -44,6 +45,7 @@ function App() : ReactElement {
           btnTitle='Criar task'
           setTaskList={setTaskList}
           taskList={taskList}/>
+          task = {taskToUpdate}
           <TaskList 
           handleDeleteTask = {handleDeleteTask}
           taskList={taskList}

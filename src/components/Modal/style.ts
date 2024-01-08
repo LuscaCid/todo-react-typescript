@@ -8,6 +8,7 @@ export const Container = styled.div`
         position: absolute;
         background-color: #000;
         opacity : .7;
+        z-index: 1;
     }
     .modal{
         padding: 2rem 1.2rem;
@@ -17,11 +18,12 @@ export const Container = styled.div`
         right: 0;
         margin: 0 auto;
         width: min(46rem, 90%);
-        z-index: 1;
-        background: black;
+        z-index: 2;
+        background: #000;
+        border-left: 2px solid #61dafb;
         display : flex ;
         flex-direction: column;
-        border-radius: .6rem;
+        border-radius: .2rem;
         h1{
             margin: 0 2.1rem;
             display: flex;
@@ -34,7 +36,7 @@ export const Container = styled.div`
                 cursor: pointer;
                 transition: color 0.5s;
                 &:hover{
-                    color: red;
+                    color: #61dafb;
                 }
             }
         }

@@ -3,12 +3,13 @@ import { Container } from "./style";
 import Task from "../../interfaces/TaskInterface";
 
 interface Props {
+    task? : Task | null
     btnTitle : string
     taskList : Task[]
     setTaskList? : React.Dispatch<React.SetStateAction<Task[]>>
     //to perplexo que precisa diss tudo pra tipar
 }
-
+ //vai receber o id do clickado
 export const TaskForm = ({btnTitle, taskList, setTaskList}: Props) => {
     const [id, setId] = useState(0)
     const [taskTitle, setTaskTitle] = useState<string | undefined>('')
