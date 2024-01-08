@@ -3,12 +3,13 @@ import { Container } from "./style";
 import Task from "../../interfaces/TaskInterface";
 
 interface Props {
+    btnTitle : string
     taskList : Task[]
     setTaskList? : React.Dispatch<React.SetStateAction<Task[]>>
     //to perplexo que precisa diss tudo pra tipar
 }
 
-export const TaskForm = ({taskList, setTaskList}: Props) => {
+export const TaskForm = ({btnTitle, taskList, setTaskList}: Props) => {
     const [id, setId] = useState(0)
     const [taskTitle, setTaskTitle] = useState<string | undefined>('')
     const [difficultLevel, setDifficultLevel] = useState<null | number>(0)
@@ -75,7 +76,7 @@ export const TaskForm = ({taskList, setTaskList}: Props) => {
             
             <button
                 type="submit">
-                Criar task
+                {btnTitle}
             </button>
         </Container>
     )

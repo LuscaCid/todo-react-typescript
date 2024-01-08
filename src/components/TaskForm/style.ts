@@ -28,11 +28,14 @@ export const Container = styled.form`
         }
     }
     button{
-        background: #61dbfb;
-        border: none;
+        color: white;
+        background: none;
+        border: 1px solid ${({theme}) => theme.borderColor};
         border-radius: 222rem;
         cursor: pointer;
+        transition: background .4s;
         &:hover{
+            background: #61dbfb;
             filter: brightness(.9);
         }
     }

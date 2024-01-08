@@ -8,6 +8,8 @@ import { TaskForm } from './components/TaskForm'
 import { useContext } from 'react'
 import Task from './interfaces/TaskInterface'
 import { TaskList } from './components/TaskList'
+import Modal from './components/Modal'
+
 function App() : ReactElement {
   //vou ter um objeto que contem o tiyulo e a dificuldade da task
   const [taskList, setTaskList] = useState<Task[]>([])  
@@ -18,8 +20,14 @@ function App() : ReactElement {
 
   return (
       <Container>
+        <Modal children = {<TaskForm 
+        btnTitle='Salvar alterações'
+        taskList={taskList}
+        />}/>
+        
         <Header taskList={taskList}/>
           <TaskForm 
+          btnTitle='Criar task'
           setTaskList={setTaskList}
           taskList={taskList}/>
           <TaskList 
