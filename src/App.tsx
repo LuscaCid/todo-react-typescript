@@ -30,7 +30,7 @@ function App(){
   }
   const handleEdit = (task :Task) : void => {
     showOrHideModal(true)
-    setTaskToUpdate(task)
+    setTaskToUpdate(task)//o state é atualizado ao clicar na task reff
   }
 
   return (
@@ -38,6 +38,7 @@ function App(){
         <Modal children = {<TaskForm 
         btnTitle='Salvar alterações'
         taskList={taskList}
+        task={taskToUpdate}
         />}/>
         
         <Header taskList={taskList}/>

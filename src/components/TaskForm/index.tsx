@@ -1,9 +1,9 @@
-import { ReactElement, useState, useContext, ChangeEvent, FormEvent } from "react";
+import { ReactElement, useState, useContext, ChangeEvent, FormEvent, useEffect } from "react";
 import { Container } from "./style";
 import Task from "../../interfaces/TaskInterface";
 
 interface Props {
-    task? : Task | null
+    task? : Task | null //only in modal its real
     btnTitle : string
     taskList : Task[]
     setTaskList? : React.Dispatch<React.SetStateAction<Task[]>>
@@ -48,6 +48,16 @@ export const TaskForm = ({task ,btnTitle, taskList, setTaskList}: Props) => {
             setDifficultLevel(parseInt(e.target.value))
         }
     }
+
+    useEffect(() => {
+        if(task){
+            setId(task.id)
+            setDifficultLevel(task.difficult)
+            setTaskTitle(task.title)
+        }
+    }, [task])
+
+
     //container its a form element created with styled components
     return (
         <Container onSubmit={handleCreateTask}>
