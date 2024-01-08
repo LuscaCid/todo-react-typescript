@@ -48,7 +48,7 @@ export const TaskForm = ({task ,btnTitle, taskList, setTaskList}: Props) => {
             setDifficultLevel(parseInt(e.target.value))
         }
     }
-
+    //container its a form element created with styled components
     return (
         <Container onSubmit={handleCreateTask}>
             <div className="input-wrapper">
