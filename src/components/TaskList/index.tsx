@@ -6,9 +6,10 @@ import { FaRegTrashAlt } from "react-icons/fa";
 interface Props {
     taskList : Task[]
     handleDeleteTask(id : number) : void
+    handleEdit() : void
 }
 
-export const TaskList = ({taskList, handleDeleteTask} : Props) => {
+export const TaskList = ({handleEdit ,taskList, handleDeleteTask} : Props) => {
     return (
         <Container>
             {taskList.length > 0 ? (<h1>Suas Tasks</h1>): (<h1>Não há tarefas cadastradas. O/</h1>)}
@@ -22,9 +23,13 @@ export const TaskList = ({taskList, handleDeleteTask} : Props) => {
                             <span>Dificuldade: {element.difficult}</span>
                         </div>
                         <div className="icons">
-                            <FaPencilAlt />
-                                <div onClick={() => {handleDeleteTask(element.id)}}>
-                            <FaRegTrashAlt />
+                            <div onClick={() => handleEdit()}>
+
+                                <FaPencilAlt />
+                            </div>
+                            
+                            <div onClick={() => {handleDeleteTask(element.id)}}>
+                                <FaRegTrashAlt />
                             </div>
                         </div>   
                     </div>

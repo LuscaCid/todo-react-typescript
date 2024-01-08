@@ -18,6 +18,20 @@ function App() : ReactElement {
     setTaskList(taskList.filter(task => task.id !== id))//retorna todos os valores que forem diferentes
   }
 
+  const showOrHideModal = (display : boolean) : void => {
+    //consigo pegar elementos html independente do arquivo...
+    const modal = document.querySelector('#modal')
+    if(display){
+      modal?.classList.remove('hide')
+    } else {
+      modal?.classList.add('hide')
+    }
+  }
+  const handleEdit = () : void => {
+    showOrHideModal(true)
+
+  }
+
   return (
       <Container>
         <Modal children = {<TaskForm 
@@ -32,7 +46,10 @@ function App() : ReactElement {
           taskList={taskList}/>
           <TaskList 
           handleDeleteTask = {handleDeleteTask}
-          taskList={taskList}/>
+          taskList={taskList}
+          handleEdit = {handleEdit}
+          />
+          
         <Footer />
       </Container>
     
