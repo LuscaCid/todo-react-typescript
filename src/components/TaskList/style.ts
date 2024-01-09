@@ -1,15 +1,19 @@
 import styled from 'styled-components'
 
-export const Container = styled.section`
+export const Container = styled.div`
     display: flex;
     flex-direction: column;
     gap: 1.2rem;
     margin: 2rem auto;
     width: min(46rem, 90%) ;
-    padding: 1.7rem 1rem;
-    border: 1px solid ${({theme}) => theme.borderColor};
-    border-radius: 0.6rem;
+    padding: 1.7rem 0rem;
     .tasks{
+        padding: 1.3rem .7rem;
+        border-radius: 0.6rem;
+        border: 1px solid ${({theme}) => theme.borderColor};
+        width: 100% ;
+        padding: 2;
+        margin-bottom: 9rem;
         display: flex;
         flex-direction: column;
         gap: 1rem;

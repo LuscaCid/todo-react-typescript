@@ -6,11 +6,12 @@ interface Props {
     task? : Task | null //only in modal its real
     btnTitle : string
     taskList : Task[]
-    setTaskList? : React.Dispatch<React.SetStateAction<Task[]>>
+    setTaskList : React.Dispatch<React.SetStateAction<Task[]>>
+    handleUpdate?(id : number, title : string | undefined, difficult : number) : void
     //to perplexo que precisa diss tudo pra tipar
 }
  //vai receber o id do clickado
-export const TaskForm = ({task ,btnTitle, taskList, setTaskList}: Props) => {
+export const TaskForm = ({handleUpdate,task ,btnTitle, taskList, setTaskList}: Props) => {
     const [id, setId] = useState(0)
     const [taskTitle, setTaskTitle] = useState<string | undefined>('')
     const [difficultLevel, setDifficultLevel] = useState<null | number>(0)
@@ -21,6 +22,8 @@ export const TaskForm = ({task ,btnTitle, taskList, setTaskList}: Props) => {
         return arrWithElement
     }
     
+    
+
     const handleCreateTask = (e : FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         if(!taskTitle)return alert('must have an title')
@@ -54,13 +57,23 @@ export const TaskForm = ({task ,btnTitle, taskList, setTaskList}: Props) => {
             setId(task.id)
             setDifficultLevel(task.difficult)
             setTaskTitle(task.title)
+            
         }
     }, [task])
 
 
     //container its a form element created with styled components
     return (
-        <Container onSubmit={handleCreateTask}>
+        <Container onSubmit={(e) => {
+            if(handleUpdate){
+                e.preventDefault()//cannot send form
+                handleUpdate(id, taskTitle, Number(difficultLevel))
+            } else {
+
+                handleCreateTask(e)
+            }
+
+        }}>
             <div className="input-wrapper">
                 <label htmlFor="titleInput">Título:</label>
                 <input 

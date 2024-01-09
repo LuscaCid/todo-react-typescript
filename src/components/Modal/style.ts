@@ -3,8 +3,9 @@ import styled from 'styled-components'
 export const Container = styled.div`
     
     .fade{
+        
         width: 100%; 
-        height: 100%; 
+        height: 100vh; 
         position: absolute;
         background-color: #000;
         opacity : .7;

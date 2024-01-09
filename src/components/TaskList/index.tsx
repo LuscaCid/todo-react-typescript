@@ -12,7 +12,7 @@ interface Props {
 export const TaskList = ({handleEdit ,taskList, handleDeleteTask} : Props) => {
     return (
         <Container>
-            {taskList.length > 0 ? (<h1>Suas Tasks</h1>): (<h1>Não há tarefas cadastradas. O/</h1>)}
+            {taskList.length > 0 ? (<h1>Minhas Tasks</h1>): (<h1>Não há tarefas cadastradas. O/</h1>)}
             <div className="tasks">
                 {taskList.length > 0 && taskList.map(element => {
                     return <div 

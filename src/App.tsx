@@ -33,12 +33,26 @@ function App(){
     setTaskToUpdate(task)//o state é atualizado ao clicar na task reff
   }
 
+  const updateTask = (id : number, title : string | undefined, difficult : number) => {
+    const updatedTaskSub : Task = {id, title, difficult}
+    const updatedItems : Task[] = taskList.map(task => {
+        return task.id === updatedTaskSub.id ? updatedTaskSub : task
+    })
+
+    setTaskList(updatedItems)
+    showOrHideModal(false)
+
+}
+
+
   return (
       <Container>
         <Modal children = {<TaskForm 
         btnTitle='Salvar alterações'
+        setTaskList={setTaskList}
         taskList={taskList}
         task={taskToUpdate}
+        handleUpdate={updateTask}
         />}/>
         
         <Header taskList={taskList}/>
