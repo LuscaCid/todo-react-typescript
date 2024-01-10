@@ -1,5 +1,5 @@
 import {Container} from './style'
-import { ReactElement, useContext, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import Task from '../../interfaces/TaskInterface'
 interface props {
     taskList : Task[]
