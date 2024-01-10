@@ -1,12 +1,8 @@
-import { ReactElement } from 'react'
 import React, {useState} from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import { Container }  from './style/'
 import { Header } from './components/Header'
 import { Footer } from './components/Footer'
 import { TaskForm } from './components/TaskForm'
-import { useContext } from 'react'
 import Task from './interfaces/TaskInterface'
 import { TaskList } from './components/TaskList'
 import Modal from './components/Modal'
@@ -43,7 +39,6 @@ function App(){
     showOrHideModal(false)
 
 }
-
 
   return (
       <Container>
