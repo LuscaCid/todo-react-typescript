@@ -15,3 +15,7 @@ npm run dev ``
 and open at the port 5173 in your browser...
 
 ### its only available with localStorage, i think to continuos later, in other day with mongo db and a form to create an account and have saved in a database your own tasks.
+
+## finisgin project at the deploy respositpry
+
+its all for now
