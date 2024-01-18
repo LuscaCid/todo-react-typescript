@@ -6,7 +6,7 @@ interface props {
 }
 
 export const Header = ( {taskList} : props) => {
-    console.log(taskList)
+    
     const [tamanho, setTamanho] = useState<number>(0)
     useEffect(() => {
         setTamanho(taskList.length)

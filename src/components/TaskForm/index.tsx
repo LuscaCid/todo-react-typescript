@@ -12,7 +12,7 @@ interface Props {
 }
  //vai receber o id do clickado
 export const TaskForm = ({handleUpdate,task ,btnTitle, taskList, setTaskList}: Props) => {
-    const [id, setId] = useState(0)
+    const [id, setId] = useState<number>(0)
     const [taskTitle, setTaskTitle] = useState<string | undefined>('')
     const [difficultLevel, setDifficultLevel] = useState<null | number>(0)
     
@@ -22,8 +22,6 @@ export const TaskForm = ({handleUpdate,task ,btnTitle, taskList, setTaskList}: P
         return arrWithElement
     }
     
-    
-
     const handleCreateTask = (e : FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         if(!taskTitle)return alert('must have an title')
@@ -41,7 +39,7 @@ export const TaskForm = ({handleUpdate,task ,btnTitle, taskList, setTaskList}: P
         setTaskTitle('')
         setDifficultLevel(0)
         setTaskList!(prevState => [...prevState, newTask ])
-        console.log(taskList)
+        localStorage.setItem("@TODO-array", JSON.stringify(taskList))
     }
     
     const handleChange = (e : ChangeEvent<HTMLInputElement>) => {
@@ -69,7 +67,6 @@ export const TaskForm = ({handleUpdate,task ,btnTitle, taskList, setTaskList}: P
                 e.preventDefault()//cannot send form
                 handleUpdate(id, taskTitle, Number(difficultLevel))
             } else {
-
                 handleCreateTask(e)
             }
 

@@ -1,4 +1,4 @@
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
 import { Container }  from './style/'
 import { Header } from './components/Header'
 import { Footer } from './components/Footer'
@@ -7,12 +7,15 @@ import Task from './interfaces/TaskInterface'
 import { TaskList } from './components/TaskList'
 import Modal from './components/Modal'
 
+
+
 function App(){
   //vou ter um objeto que contem o tiyulo e a dificuldade da task
   const [taskList, setTaskList] = useState<Task[]>([])  
   const [taskToUpdate, setTaskToUpdate] = useState<Task | null>(null)
   const handleDeleteTask = (id : number) => {
     setTaskList(taskList.filter((task : Task) => task.id !== id))//retorna todos os valores que forem diferentes
+    localStorage.setItem("@TODO-array", JSON.stringify(taskList))
   }
 
   const showOrHideModal = (display : boolean) : void => {
@@ -36,9 +39,19 @@ function App(){
     })
 
     setTaskList(updatedItems)
+    localStorage.setItem("@TODO-array", JSON.stringify(updatedItems))
     showOrHideModal(false)
 
 }
+
+  useEffect(() => {
+    const alreadyCreatedTasks = localStorage.getItem("@TODO-array")
+    
+    if(alreadyCreatedTasks){
+      const arrayFromStorage = JSON.parse(alreadyCreatedTasks)
+      setTaskList([...arrayFromStorage])
+    }
+  }, [])
 
   return (
       <Container>
