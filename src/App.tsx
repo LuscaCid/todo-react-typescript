@@ -43,7 +43,6 @@ function App(){
     showOrHideModal(false)
 
 }
-
   useEffect(() => {
     const alreadyCreatedTasks = localStorage.getItem("@TODO-array")
     
